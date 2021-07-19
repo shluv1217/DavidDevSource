@@ -23,6 +23,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,19 +43,27 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
 public class TestApplication {
 	
+	@Autowired 	
+	UserService userservice;
+
+	
 	Logger logger = LoggerFactory.getLogger(TestApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(TestApplication.class, args);
 	}
 	
-//	@PostMapping("/test")
-//	public void post(@RequestBody Param param) {
-//	    String msg = "Data1 : " + param.getData1() + ", Data2 : " + param.getData2();
-//	    
-//	    //logger.info("Success!", msg);
-//	    System.out.println("Success! : "+msg);
-//	}
+	@RequestMapping(method = RequestMethod.POST, value = "/test")
+	public void maridbTest() {
+	   
+		List<UserVO> userVO = userservice.retrieveUsers();
+		
+		
+	    System.out.println("Success! : " + userVO);
+	}
+	
+	
+	
 	
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/fileTest")
@@ -70,8 +79,14 @@ public class TestApplication {
 	    	//String json = inputString; 
 	    	try { // convert JSON string to Map 
 	    		//Map<String, List> map = mapper.readValue(json, Map.class); 
-	    		List<Person> list = Arrays.asList(mapper.readValue(inputString, Person[].class));
-	    		System.out.println(list.get(0));
+	    		List<Person> Personlist = Arrays.asList(mapper.readValue(inputString, Person[].class));
+	    		
+	    		
+	    		for (Person person : Personlist) {
+	    			System.out.println("PersonName : " + person.getName());
+	    		}
+	    		
+	    		
 	    	}catch (IOException e) { e.printStackTrace(); }
 	    	
 		} catch (IOException e3) {
