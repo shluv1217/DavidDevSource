@@ -14,7 +14,23 @@ public class MailIndexS {
 	
 	
 	//인덱스 재색인 
-    public HashMap<String,String> updateIndexByUserInfoB(List<MailIndexDTO.UpdateIndexInfo> updateIndexInfoList) throws Exception{
+    public HashMap<String,String> updateIndexByUserInfoB(List<MailIndexDTO.UpdatebyUserInfoDTO> updateIndexInfoList) throws Exception{
+
+    	
+    	HashMap<String,String> resultMap = new HashMap<String,String>();
+    	
+    	
+    	
+    	resultMap.put("returnCode", "00");
+		resultMap.put("returnMessage", "Success");
+    	
+    	
+    	return resultMap;
+    }
+    
+    
+    //Test
+    public HashMap<String,String> helloService() throws Exception{
 
     	
     	HashMap<String,String> resultMap = new HashMap<String,String>();

@@ -10,9 +10,9 @@ import lombok.ToString;
 
 
 
-public class MailIndexResponseDTO {	
-	
-	@AllArgsConstructor
+public class MailIndexResponseDTO { 
+    
+    @AllArgsConstructor
     @NoArgsConstructor
     @Getter
     @Setter
@@ -21,7 +21,7 @@ public class MailIndexResponseDTO {
     public static class Response {
         private String returnCode; //00 : 성공, 01 : 부분성공, 99 : 실패
         private String returnMessage;
-        private String reqeustCnt;
+        private String requestCnt;
         private String errorCnt;
     }
 }

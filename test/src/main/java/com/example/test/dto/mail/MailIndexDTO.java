@@ -2,6 +2,7 @@ package com.example.test.dto.mail;
 
 import java.util.List;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,26 +13,92 @@ import lombok.ToString;
 
 
 
-public class MailIndexDTO {	
-	
-	@AllArgsConstructor
-	@NoArgsConstructor
+public class MailIndexDTO {
+
+    
+    //UpdatebyUserInfoDTO
+    @AllArgsConstructor
+    @NoArgsConstructor
 	@Getter
 	@Setter
 	@ToString
-	@Builder
-	public static class UpdateIndexInfo {
+    @Builder
+    public static class UpdatebyUserInfoDTO{
+    	@NotBlank
+        private String id;
+        private String recursive;
+        private String include;
+        private String gte;
+        private String lte;
+        private String clean;
+        private List<Integer> folderlist;
+	}
+    
+    
+    
+    
+    //DelbyUserInfoDTO
+    @AllArgsConstructor
+	@Getter
+	@Setter
+	@ToString
+    @Builder
+    public static class DelbyUserInfoDTO{
+    	@NotBlank
+		private String id;
+		private List<String> mailIdlist;
+	    private List<Integer> folderlist;
+	    private List<Integer> mlSeqlist;
+	}
+    
+    
+    
+    //DelbyMailInfoDTO
+	@AllArgsConstructor
+	@Getter
+	@Setter
+	@ToString
+    @Builder
+    public static class DelbyMailInfoDTO{
+		@NotEmpty
+	    private List<String> mailIdlist;
 		@NotBlank
+	    private String setcode;
+	    private List<String> exUserIdist;
+	}
+	
+	
+	
+    //DelbyDateInfoDTO
+	@AllArgsConstructor
+	@Getter
+	@Setter
+	@ToString
+    @Builder
+    public static class DelbyDateInfoDTO{
 	    private String id;
-	    private String recursive;
-	    private String priority;
 	    private String gt;
 	    private String gte;
 	    private String lt;
 	    private String lte;
-	    private String clean;
-	    private List<Integer> folderlist;
-	}	
+	    private String setcode;
+	    private List<String> exUserIdist;
+	}
+	
+	
+	//MailSyncDTO
+	@AllArgsConstructor
+    @NoArgsConstructor
+	@Getter
+	@Setter
+	@ToString
+    @Builder
+    public static class MailSyncDTO {
+		private List<String> idList;
+	    private boolean metaYn;
+	}
+
+	
 }
 	
 

@@ -26,6 +26,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,8 +44,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
 public class TestApplication {
 	
-	@Autowired 	
-	UserService userservice;
+
 
 	
 	Logger logger = LoggerFactory.getLogger(TestApplication.class);
@@ -53,14 +53,6 @@ public class TestApplication {
 		SpringApplication.run(TestApplication.class, args);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/test")
-	public void maridbTest() {
-	   
-		List<UserVO> userVO = userservice.retrieveUsers();
-		
-		
-	    System.out.println("Success! : " + userVO);
-	}
 	
 	
 	
