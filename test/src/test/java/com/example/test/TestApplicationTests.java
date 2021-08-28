@@ -1,5 +1,7 @@
 package com.example.test;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +39,8 @@ class TestApplicationTests {
 	 mockMvc.perform(MockMvcRequestBuilders.post("/mail/updateMailIndexByUserInfo")
 			 .contentType(MediaType.APPLICATION_JSON_VALUE)
 			 .content(objectMapper.writeValueAsString(updateMailIndexInfoList))
-			 ).andExpect(MockMvcResultMatchers.status().isOk());
+			 ).andExpect(MockMvcResultMatchers.status().isOk())
+	 		  .andExpect(jsonPath("$.returnCode").value("00"));
 	}
 	
 	
