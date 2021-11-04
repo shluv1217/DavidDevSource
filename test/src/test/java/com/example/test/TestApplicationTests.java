@@ -26,7 +26,7 @@ class TestApplicationTests {
 	 
 	@Autowired
 	ObjectMapper objectMapper;	
-
+    
 	@Test
 	public void updateMailIndexByUserInfo() throws Exception {
 	 List<Integer> folderlist = new ArrayList<Integer>();
